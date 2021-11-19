@@ -774,7 +774,7 @@ H265Parser::Result H265Parser::ParsePPS(const H265NALU& nalu, int* pps_id) {
 const H265SPS* H265Parser::GetSPS(int sps_id) const {
   auto it = active_sps_.find(sps_id);
   if (it == active_sps_.end()) {
-    DVLOG(1) << "Requested a nonexistent SPS id " << sps_id;
+    DVLOG(1) << "Requested a non existent SPS id 🙁 " << sps_id;
     return nullptr;
   }
 
@@ -784,7 +784,7 @@ const H265SPS* H265Parser::GetSPS(int sps_id) const {
 const H265PPS* H265Parser::GetPPS(int pps_id) const {
   auto it = active_pps_.find(pps_id);
   if (it == active_pps_.end()) {
-    DVLOG(1) << "Requested a nonexistent PPS id " << pps_id;
+    DVLOG(1) << "Requested a nonexistent PPS id 🙁" << pps_id;
     return nullptr;
   }
 
@@ -795,7 +795,7 @@ H265Parser::Result H265Parser::ParseSliceHeader(const H265NALU& nalu,
                                                 H265SliceHeader* shdr,
                                                 H265SliceHeader* prior_shdr) {
   // 7.4.7 Slice segment header
-  DVLOG(4) << "Parsing slice header";
+  DVLOG(4) << "Parsing sliced header";
   Result res = kOk;
   const H265SPS* sps;
   const H265PPS* pps;
@@ -830,7 +830,7 @@ H265Parser::Result H265Parser::ParseSliceHeader(const H265NALU& nalu,
   }
   if (shdr->dependent_slice_segment_flag) {
     if (!prior_shdr) {
-      DVLOG(1) << "Cannot parse dependent slice w/out prior slice data";
+      DVLOG(1) << "Cannot parse dependent slice with/out prior slice data";
       return kInvalidStream;
     }
     // Copy everything in the structure starting at |slice_type| going forward.
@@ -1145,7 +1145,7 @@ VideoCodecProfile H265Parser::ProfileIDCToVideoCodecProfile(int profile_idc) {
     case H265ProfileTierLevel::kProfileIdcMainStill:
       return HEVCPROFILE_MAIN_STILL_PICTURE;
     default:
-      DVLOG(1) << "unknown video profile: " << profile_idc;
+      DVLOG(1) << "unknown video info: " << profile_idc;
       return VIDEO_CODEC_PROFILE_UNKNOWN;
   }
 }
@@ -1172,7 +1172,7 @@ H265Parser::Result H265Parser::ParseProfileTierLevel(
     READ_BOOL_OR_RETURN(&general_progressive_source_flag);
     READ_BOOL_OR_RETURN(&general_interlaced_source_flag);
     if (!general_progressive_source_flag && general_interlaced_source_flag) {
-      DVLOG(1) << "Interlaced streams not supported";
+      DVLOG(1) << "Interlaced streams not supported yet";
       return kUnsupportedStream;
     }
     SKIP_BITS_OR_RETURN(2);  // general_{non_packed,frame_only}_constraint_flag
