@@ -158,7 +158,7 @@ const std::string& GURL::spec() const {
   if (is_valid_ || spec_.empty())
     return spec_;
 
-  DCHECK(false) << "Trying to get the specs of an invalid URL! (Did you typo? ￣へ￣ )";
+  DCHECK(false) << "Trying to get the specs of an invalid URL! That does not make sense! (Did you typo? ￣へ￣ )";
   return base::EmptyString();
 }
 
