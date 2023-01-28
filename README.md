@@ -1,5 +1,5 @@
 # ![Logo](resources/icons/Icon_resource.png) Cursemium
-Phoenix is a simple browser designed to be funny.
+Cursemium is a simple browser designed to be cursed, expect strange icons.
 ## Change Log
 * Nothing
 * Absolutely Nothing
