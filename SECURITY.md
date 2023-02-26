@@ -1,8 +1,7 @@
 # Security Policy
-
+ATTENTION! This fork is incredibly out of date
 ## Supported Versions
 
-Because I am gonna adopt a Software as a Service system, I will be updating versions as frequently as possible
 
 
 | Version | Supported          | Date Of Release |
